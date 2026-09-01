@@ -1,0 +1,3 @@
+# Build artifacts from mayhem/build.sh — never stage these.
+kat/target/
+kat/Cargo.lock

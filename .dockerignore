@@ -1,0 +1,23 @@
+# .dockerignore for the commit-image build.
+# Goal: bake in the FULL repo (including .git history — the grader uses it),
+# dropping only local build artifacts and editor/OS cruft. Dev image, not minimal.
+#
+# icu4x ships no root .dockerignore of its own, so nothing of upstream's test data
+# or fixtures is at risk of being silently excluded here (docs/netnew-worker-prompt.md
+# §4b — only relevant when upstream ships one).
+
+# ── Build outputs / local cruft ──────────────────────────────────────────────
+target/
+**/target/
+components/calendar/fuzz/target/
+mayhem/kat/target/
+*.o
+*.a
+*.so
+*.dylib
+**/__pycache__/
+
+# ── Editor / OS noise ────────────────────────────────────────────────────────
+.DS_Store
+*.swp
+*~

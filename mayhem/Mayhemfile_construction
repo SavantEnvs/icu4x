@@ -1,0 +1,6 @@
+project: savantenvs/icu4x
+target: construction
+
+cmds:
+  - cmd: /mayhem/construction
+    libfuzzer: true

@@ -1,0 +1,6 @@
+project: savantenvs/icu4x
+target: until
+
+cmds:
+  - cmd: /mayhem/until
+    libfuzzer: true

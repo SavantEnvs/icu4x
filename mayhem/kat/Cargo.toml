@@ -1,0 +1,23 @@
+# mayhem/kat — additive, standalone known-answer-test (KAT) probe crate.
+#
+# NOT part of upstream. Exists purely so mayhem/test.sh has a DYNAMICALLY LINKED
+# binary to assert exact values against (see docs/netnew-worker-prompt.md §4):
+# `cargo test`'s harness binary is the forbidden oracle shape (a statically-linked
+# runner that the sabotage LD_PRELOAD shim can't reliably intercept), so this crate
+# gives us a small `main()` that computes a handful of icu_calendar results from a
+# FIXED input and prints them for test.sh to grep verbatim.
+#
+# Own empty [workspace] table (required — icu4x's root Cargo.toml would otherwise
+# treat this as an untracked workspace member and error).
+[package]
+name = "icu4x-mayhem-kat"
+version = "0.0.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+# Same crate + feature set the fuzz targets exercise (baked CLDR/calendrical data,
+# so results are fully deterministic and don't need a runtime data provider).
+icu_calendar = { path = "../../components/calendar", features = ["compiled_data"] }
+
+[workspace]

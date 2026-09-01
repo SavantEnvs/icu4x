@@ -1,0 +1,6 @@
+project: savantenvs/icu4x
+target: add
+
+cmds:
+  - cmd: /mayhem/add
+    libfuzzer: true
